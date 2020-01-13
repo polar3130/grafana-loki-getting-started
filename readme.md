@@ -1,4 +1,4 @@
-# Grafana Loki で学ぶ K8s ロギング ハンズオン
+# Grafana Loki で学ぶ Kubernetes ロギング ハンズオン
 Grafana Loki を使って Kubernetes のクラスタレベルロギングを学ぶハンズオンワークショップのチュートリアル
 
 
@@ -22,5 +22,5 @@ cloudshell launch-tutorial -d tutorial.md
 
 ## Author
 
-Masahiko Utsunomiya
+Masahiko Utsunomiya  
 @polar3130
