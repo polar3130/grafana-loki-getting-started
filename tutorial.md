@@ -1,17 +1,16 @@
-# Grafana Loki Getting Started
+# Tutorial-00 環境準備
 
 ## Agenda
 
 1. GKE クラスタの作成
+1. Helm のインストール
 1. Loki スタックの作成
-1. アプリケーションのデプロイ
-1. アプリケーションのアップデート
-1. 2つ目のアプリケーションのデプロイ
+1. Grafana と Loki の接続
+
 
 # 1. GKE クラスターの作成
 
 GKEのクラスターを作成します。
-
 
 ## 1.1 ProjectID の指定
 
@@ -41,7 +40,6 @@ gcloud services enable \
   cloudapis.googleapis.com \
   container.googleapis.com \
   containerregistry.googleapis.com \
-  cloudbuild.googleapis.com
 ```
 
 ## 1.3 GKE クラスタの作成

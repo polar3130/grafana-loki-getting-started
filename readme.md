@@ -1,5 +1,5 @@
 # Grafana Loki で学ぶ Kubernetes ロギング ハンズオン
-Grafana Loki を使って Kubernetes のクラスタレベルロギングを学ぶハンズオンワークショップのチュートリアル
+「Grafana Loki を使って Kubernetes のクラスタレベルロギングを学ぶハンズオンワークショップ」のチュートリアル
 
 
 ## Open this repo in Google Cloud Shell
@@ -9,11 +9,12 @@ Grafana Loki を使って Kubernetes のクラスタレベルロギングを学�
 マニュアルでリポジトリをcloneした場合は、次のコマンドでチュートリアルを起動してください
 
 ```bash
-cloudshell launch-tutorial -d tutorial.md
+cloudshell launch-tutorial -d tutorial-00.md
 ```
 
 ## チュートリアル目次
 
+0.
 1.
 1.
 1.
