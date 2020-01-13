@@ -9,7 +9,7 @@
 マニュアルでリポジトリをcloneした場合は、次のコマンドでチュートリアルを起動してください
 
 ```bash
-cloudshell launch-tutorial -d tutorial-00.md
+cloudshell launch-tutorial -d tutorial.md
 ```
 
 ## チュートリアル目次
