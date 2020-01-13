@@ -21,16 +21,24 @@ GCP プロジェクトのプロジェクト ID を表示します
 gcloud projects list
 ```
 
+
 今回使用するプロジェクトを Cloud Shell のデフォルトプロジェクトに設定します
 
 ```bash
-gcloud config set project "プロジェクト名"
+gcloud config set project <YOUR PROJECT NAME>
 ```
+
 
 後続のステップで使用するため、プロジェクト ID を export しておきます
 
 ```bash
 export PROJECT_ID=$(gcloud config get-value project)
+```
+
+
+export した内容を確認します
+
+```
 echo $PROJECT_ID
 ```
 
@@ -41,6 +49,7 @@ echo $PROJECT_ID
 ```bash
 gcloud config set compute/zone asia-northeast1-b
 ```
+
 
 後続のステップで使用するため、利用するゾーン を export しておきます
 
@@ -59,6 +68,7 @@ gcloud services enable \
   cloudapis.googleapis.com \
   container.googleapis.com
 ```
+
 
 有効化が完了してから次へ進んでください
 
@@ -104,13 +114,21 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bas
 Loki などのロギングスタックをインストールする namespace を作成します
 
 ```bash
-kubectl create namespace loki-stack
+kubectl create ns loki
 ```
 
 ## 1.8
 
+Helm に Grafana Loki のリポジトリを登録します
+
 ```bash
 helm repo add loki https://grafana.github.io/loki/charts
+```
+
+
+リポジトリをアップデートします
+
+```bash
 helm repo update
 ```
 
@@ -120,8 +138,9 @@ Loki スタック※ を GKE クラスタにインストールします
 ※ Grafana, Grafana Loki, Promtail によるロギングスタック
 
 ```bash
-helm install loki-stack --namespace=loki loki/loki-stack --set grafana.enabled=true --grafana.image.tag=master
+helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=true --set grafana.sidecar.datasources.enabled=false --set grafana.image.tag=master
 ```
+
 
 インストールした Helm のリリースを確認します
 
@@ -129,11 +148,17 @@ helm install loki-stack --namespace=loki loki/loki-stack --set grafana.enabled=t
 helm ls -n loki
 ```
 
-## 2.0 Lokiスタック
+## 2.0 Loki スタックの概要
 
 ```bash
 kubectl get all -n loki
 ```
+
+
+```bash
+kubectl get secret loki-stack-grafana -n loki -o jsonpath="{.data.admin-password}" | base64 -d
+```
+
 
 ```bash
 gcloud container clusters get-credentials loki-handson-cluster --zone $COMPUTE_ZONE --project $PROJECT_ID \
