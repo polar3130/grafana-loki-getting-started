@@ -14,12 +14,10 @@ cloudshell launch-tutorial -d tutorial-00.md
 
 ## チュートリアル目次
 
-0.環境準備
-0.
-0.
-0.
-0.
-0.
+0. 環境準備
+1. LogQL 入門
+2. Aggregatable Events の可視化
+3. 片付け 
 
 ## Author
 

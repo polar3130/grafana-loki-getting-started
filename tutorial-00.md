@@ -2,11 +2,10 @@
 
 ## Agenda
 
-1. GKE クラスタの作成
-1. Helm のインストール
-1. Loki スタックの作成
-1. Grafana と Loki の接続
-
+1. 1. GKE クラスタの作成
+1. 2. Helm のインストール
+1. 3. Loki スタックの作成
+1. 4. Grafana と Loki の接続
 
 # 1. GKE クラスターの作成
 
