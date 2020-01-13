@@ -14,12 +14,12 @@ cloudshell launch-tutorial -d tutorial-00.md
 
 ## チュートリアル目次
 
+0.環境準備
 0.
-1.
-1.
-1.
-1.
-1.
+0.
+0.
+0.
+0.
 
 ## Author
 
