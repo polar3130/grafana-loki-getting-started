@@ -25,7 +25,8 @@ GCP プロジェクトを新規作成します
 
 [\[リソースの管理\]ページに移動](https://console.cloud.google.com/cloud-resource-manager?hl=ja)
 
-
+  
+  
 **ハンズオンに使用するプロジェクトを作成済みの場合**  
 GCP プロジェクトのプロジェクト ID を表示します
 
@@ -41,14 +42,14 @@ gcloud projects list
 gcloud config set project <YOUR-PROJECT-ID>
 ```
 
-
+  
 後続のステップで使用するため、プロジェクト ID を export しておきます
 
 ```bash
 export PROJECT_ID=$(gcloud config get-value project)
 ```
 
-
+  
 export した内容を確認します
 
 ```bash
@@ -63,14 +64,14 @@ echo $PROJECT_ID
 gcloud config set compute/zone asia-northeast1-b
 ```
 
-
+  
 後続のステップで使用するため、利用するゾーンを export しておきます
 
 ```bash
 export COMPUTE_ZONE=$(gcloud config get-value compute/zone)
 ```
 
-
+  
 export した内容を確認します
 
 ```bash
@@ -96,6 +97,7 @@ GKE クラスタの作成をリクエストします
 ```bash
 gcloud container clusters create loki-handson-cluster --enable-ip-alias --num-nodes 3 --zone $COMPUTE_ZONE --async
 ```
+  
 GKE クラスタのステータスが **PROVISIONING** になっていることを確認します
 
 ## 0.6 クラスタの起動確認
@@ -105,7 +107,7 @@ GKE クラスタのステータスが **PROVISIONING** になっていること�
 ```bash
 gcloud container clusters list
 ```
-
+  
 コンソールで確認する場合は以下をクリック
 
 [Display on the Console](https://console.cloud.google.com/kubernetes/list)
