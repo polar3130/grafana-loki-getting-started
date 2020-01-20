@@ -24,8 +24,11 @@
 GCP プロジェクトを新規作成します
 
 ```bash
-gcloud projects create grafana-loki-handson
+gcloud projects create <YOUR-PROJECT-ID>
 ```
+
+コンソールから作成する場合はこちら
+[\[リソースの管理\]ページに移動](https://console.cloud.google.com/cloud-resource-manager?hl=ja)
 
 
 **ハンズオンに使用するプロジェクトを作成済みの場合**
@@ -40,7 +43,7 @@ gcloud projects list
 今回使用するプロジェクトを Cloud Shell のデフォルトプロジェクトに設定します
 
 ```bash
-gcloud config set project <YOUR-PROJECT-NAME>
+gcloud config set project <YOUR-PROJECT-ID>
 ```
 
 
