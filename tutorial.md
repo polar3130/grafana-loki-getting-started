@@ -20,18 +20,13 @@
 
 ## 0.1 プロジェクトの作成/確認
 
-**ハンズオンに使用するプロジェクトを未だ作成していない場合**
+**ハンズオンに使用するプロジェクトを未だ作成していない場合**  
 GCP プロジェクトを新規作成します
 
-```bash
-gcloud projects create <YOUR-PROJECT-ID>
-```
-
-コンソールから作成する場合はこちら
 [\[リソースの管理\]ページに移動](https://console.cloud.google.com/cloud-resource-manager?hl=ja)
 
 
-**ハンズオンに使用するプロジェクトを作成済みの場合**
+**ハンズオンに使用するプロジェクトを作成済みの場合**  
 GCP プロジェクトのプロジェクト ID を表示します
 
 ```bash
@@ -60,7 +55,7 @@ export した内容を確認します
 echo $PROJECT_ID
 ```
 
-## 0.2 Zone の設定
+## 0.3 Zone の設定
 
 今回使用するゾーンを Cloud Shell のデフォルトゾーンに設定します
 
@@ -78,11 +73,11 @@ export COMPUTE_ZONE=$(gcloud config get-value compute/zone)
 
 export した内容を確認します
 
-```
+```bash
 echo $COMPUTE_ZONE
 ```
 
-## 0.2 APIの有効化
+## 0.4 APIの有効化
 
 GKE クラスタの作成に必要となる API を有効化します  
 （有効化には数分を要する場合があります）
@@ -93,7 +88,7 @@ gcloud services enable \
   container.googleapis.com
 ```
 
-## 0.3 GKE クラスタの作成
+## 0.5 GKE クラスタの作成
 
 GKE クラスタの作成をリクエストします  
 （Cloud Shell のコントロールはクラスタの作成完了を待たずにユーザに戻ります）
@@ -103,7 +98,7 @@ gcloud container clusters create loki-handson-cluster --enable-ip-alias --num-no
 ```
 GKE クラスタのステータスが **PROVISIONING** になっていることを確認します
 
-## 0.4 クラスタの起動確認
+## 0.6 クラスタの起動確認
 
 作成した GKE クラスタのステータスが **RUNNING** になっていることを確認します
 
@@ -115,7 +110,7 @@ gcloud container clusters list
 
 [Display on the Console](https://console.cloud.google.com/kubernetes/list)
 
-## 0.5 Credential の取得
+## 0.7 Credential の取得
 
 GKE クラスタへ接続するための Credential を取得します
 
@@ -123,7 +118,7 @@ GKE クラスタへ接続するための Credential を取得します
 gcloud container clusters get-credentials loki-handson-cluster --zone $COMPUTE_ZONE --project $PROJECT_ID
 ```
 
-## 0.6 Helm のインストール
+## 0.8 Helm のインストール
 
 Kubernetes のパッケージマネージャである Helm をインストールします
 
@@ -131,7 +126,7 @@ Kubernetes のパッケージマネージャである Helm をインストール
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ```
 
-## 0.7 namespace の作成
+## 0.9 namespace の作成
 
 Loki などのロギングスタックをインストールする namespace を作成します
 
@@ -139,7 +134,7 @@ Loki などのロギングスタックをインストールする namespace を�
 kubectl create ns loki
 ```
 
-## 0.8
+## 0.10
 
 Helm に Grafana Loki のリポジトリを登録します
 
@@ -154,7 +149,7 @@ helm repo add loki https://grafana.github.io/loki/charts
 helm repo update
 ```
 
-## 0.9 Loki スタックのインストール
+## 0.11 Loki スタックのインストール
 
 Loki スタック※ を GKE クラスタにインストールします
 ※ Grafana, Grafana Loki, Promtail によるロギングスタック
