@@ -18,19 +18,29 @@
 
 ※ 以後、Loki と略記する場合があります
 
-## 0.1 Project ID の設定
+## 0.1 プロジェクトの作成/確認
 
+**ハンズオンに使用するプロジェクトを未だ作成していない場合**
+GCP プロジェクトを新規作成します
+
+```bash
+gcloud projects create grafana-loki-handson
+```
+
+
+**ハンズオンに使用するプロジェクトを作成済みの場合**
 GCP プロジェクトのプロジェクト ID を表示します
 
 ```bash
 gcloud projects list
 ```
 
+## 0.2 Project ID の設定
 
 今回使用するプロジェクトを Cloud Shell のデフォルトプロジェクトに設定します
 
 ```bash
-gcloud config set project <YOUR PROJECT NAME>
+gcloud config set project <YOUR-PROJECT-NAME>
 ```
 
 
@@ -43,7 +53,7 @@ export PROJECT_ID=$(gcloud config get-value project)
 
 export した内容を確認します
 
-```
+```bash
 echo $PROJECT_ID
 ```
 
@@ -71,7 +81,7 @@ echo $COMPUTE_ZONE
 
 ## 0.2 APIの有効化
 
-GKE クラスタの作成に必要となる API を有効化します　　
+GKE クラスタの作成に必要となる API を有効化します  
 （有効化には数分を要する場合があります）
 
 ```bash
@@ -80,17 +90,15 @@ gcloud services enable \
   container.googleapis.com
 ```
 
-
-有効化が完了してから次へ進んでください
-
 ## 0.3 GKE クラスタの作成
 
-GKE クラスタの作成をリクエストします
+GKE クラスタの作成をリクエストします  
 （Cloud Shell のコントロールはクラスタの作成完了を待たずにユーザに戻ります）
 
 ```bash
-gcloud container clusters create loki-handson-cluster --enable-ip-alias --num-nodes 2 --zone $COMPUTE_ZONE --async
+gcloud container clusters create loki-handson-cluster --enable-ip-alias --num-nodes 3 --zone $COMPUTE_ZONE --async
 ```
+GKE クラスタのステータスが **PROVISIONING** になっていることを確認します
 
 ## 0.4 クラスタの起動確認
 
