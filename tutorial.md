@@ -142,6 +142,10 @@ Helm に Grafana Loki のリポジトリを登録します
 helm repo add loki https://grafana.github.io/loki/charts
 ```
 
+```bash
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/ 
+```
+
 
 リポジトリをアップデートします
 
@@ -155,7 +159,7 @@ Loki スタック※ を GKE クラスタにインストールします
 ※ Grafana, Grafana Loki, Promtail によるロギングスタック
 
 ```bash
-helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=true --set grafana.sidecar.datasources.enabled=false --set grafana.image.tag=master
+helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=true --set grafana.image.tag=master --set prometheus.enabled=true
 ```
 
 
@@ -164,6 +168,17 @@ helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=t
 ```bash
 helm ls -n loki
 ```
+
+
+## 0.x
+
+cd
+
+git clone https://github.com/GoogleCloudPlatform/microservices-demo.git
+
+cd microservices-demo
+
+skaffold run --default-repo=gcr.io/$PROJECT_ID
 
 ## 1.0 Loki スタックの概要
 
