@@ -20,14 +20,12 @@
 
 ## 0.1 プロジェクトの作成/確認
 
-**ハンズオンに使用するプロジェクトを未だ作成していない場合**  
+### ハンズオンに使用するプロジェクトを未だ作成していない場合
 GCP プロジェクトを新規作成します
 
-[\[リソースの管理\]ページに移動](https://console.cloud.google.com/cloud-resource-manager?hl=ja)
+[\[リソースの管理\]ページに移動](https://console.cloud.google.com/cloud-resource-manager?hl=ja)  
 
----
-
-**ハンズオンに使用するプロジェクトを作成済みの場合**  
+### ハンズオンに使用するプロジェクトを作成済みの場合
 GCP プロジェクトのプロジェクト ID を表示します
 
 ```bash
@@ -41,6 +39,8 @@ gcloud projects list
 ```bash
 gcloud config set project <YOUR-PROJECT-ID>
 ```  
+
+.
 
 後続のステップで使用するため、プロジェクト ID を export しておきます
 
@@ -64,7 +64,7 @@ echo $PROJECT_ID
 gcloud config set compute/zone asia-northeast1-b
 ```
 
-.  
+.
 
 後続のステップで使用するため、利用するゾーンを export しておきます
 
@@ -72,7 +72,7 @@ gcloud config set compute/zone asia-northeast1-b
 export COMPUTE_ZONE=$(gcloud config get-value compute/zone)
 ```
 
- <br>
+.
 
 export した内容を確認します
 
@@ -112,7 +112,7 @@ GKE クラスタのステータスが **PROVISIONING** になっていること�
 gcloud container clusters list
 ```
 
-<br />
+.
   
 コンソールで確認する場合は以下をクリック
 
