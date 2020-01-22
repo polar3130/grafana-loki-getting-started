@@ -122,11 +122,18 @@ gcloud container clusters get-credentials loki-handson-cluster --zone $COMPUTE_Z
 
 ## 0.8 Helm のインストール
 
-Kubernetes のパッケージマネージャである Helm をインストールします
+Kubernetes のパッケージマネージャである Helm のバージョンを確認します
 
 ```bash
-curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+helm version
 ```
+
+  
+$ kubectl -n kube-system create serviceaccount tiller
+$ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+$ helm init --service-account=tiller
+
+
 
 ## 0.9 namespace の作成
 
@@ -144,11 +151,7 @@ Helm に Grafana Loki のリポジトリを登録します
 helm repo add loki https://grafana.github.io/loki/charts
 ```
 
-```bash
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/ 
-```
-
-
+  
 リポジトリをアップデートします
 
 ```bash
@@ -162,13 +165,6 @@ Loki スタック※ を GKE クラスタにインストールします
 
 ```bash
 helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=true --set grafana.image.tag=master --set prometheus.enabled=true
-```
-
-
-インストールした Helm のリリースを確認します
-
-```bash
-helm ls -n loki
 ```
 
 
