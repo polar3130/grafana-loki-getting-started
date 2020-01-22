@@ -47,15 +47,7 @@ gcloud config set project <YOUR-PROJECT-ID>
 後続のステップで使用するため、プロジェクト ID を export しておきます
 
 ```bash
-export PROJECT_ID=$(gcloud config get-value project)
-```
-
-.
-
-export した内容を確認します
-
-```bash
-echo $PROJECT_ID
+export PROJECT_ID=$(gcloud config get-value project); echo $PROJECT_ID
 ```
 
 ## 0.3 Zone の設定
@@ -71,15 +63,7 @@ gcloud config set compute/zone asia-northeast1-b
 後続のステップで使用するため、利用するゾーンを export しておきます
 
 ```bash
-export COMPUTE_ZONE=$(gcloud config get-value compute/zone)
-```
-
-.
-
-export した内容を確認します
-
-```bash
-echo $COMPUTE_ZONE
+export COMPUTE_ZONE=$(gcloud config get-value compute/zone); echo $COMPUTE_ZONE
 ```
 
 ## 0.4 APIの有効化
