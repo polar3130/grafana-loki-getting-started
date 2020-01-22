@@ -26,6 +26,8 @@ GCP プロジェクトを新規作成します
 [\[リソースの管理\]ページに移動](https://console.cloud.google.com/cloud-resource-manager?hl=ja)
 
 <br />
+<br />
+<br />
 
 **ハンズオンに使用するプロジェクトを作成済みの場合**  
 GCP プロジェクトのプロジェクト ID を表示します
@@ -42,7 +44,8 @@ gcloud projects list
 gcloud config set project <YOUR-PROJECT-ID>
 ```
 
-<br />
+　  
+
 
 後続のステップで使用するため、プロジェクト ID を export しておきます
 
@@ -50,7 +53,7 @@ gcloud config set project <YOUR-PROJECT-ID>
 export PROJECT_ID=$(gcloud config get-value project)
 ```
 
-<br />
+---
 
 export した内容を確認します
 
@@ -66,7 +69,7 @@ echo $PROJECT_ID
 gcloud config set compute/zone asia-northeast1-b
 ```
 
-<br />
+***
 
 後続のステップで使用するため、利用するゾーンを export しておきます
 
@@ -74,7 +77,7 @@ gcloud config set compute/zone asia-northeast1-b
 export COMPUTE_ZONE=$(gcloud config get-value compute/zone)
 ```
 
-<br />  
+___  
 
 export した内容を確認します
 
