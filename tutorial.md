@@ -40,9 +40,7 @@ gcloud projects list
 
 ```bash
 gcloud config set project <YOUR-PROJECT-ID>
-```
-
-[]()<br>
+```  
 
 後続のステップで使用するため、プロジェクト ID を export しておきます
 
@@ -50,7 +48,7 @@ gcloud config set project <YOUR-PROJECT-ID>
 export PROJECT_ID=$(gcloud config get-value project)
 ```
 
-.<br>
+.
 
 export した内容を確認します
 
@@ -66,7 +64,7 @@ echo $PROJECT_ID
 gcloud config set compute/zone asia-northeast1-b
 ```
 
-***
+.  
 
 後続のステップで使用するため、利用するゾーンを export しておきます
 
@@ -74,7 +72,7 @@ gcloud config set compute/zone asia-northeast1-b
 export COMPUTE_ZONE=$(gcloud config get-value compute/zone)
 ```
 
-___  
+ <br>
 
 export した内容を確認します
 
