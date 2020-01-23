@@ -6,7 +6,7 @@
 
 [![Open in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/polar3130/grafana-loki-getting-started.git&page=editor&tutorial=tutorial.md)
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fpolar3130%2Fgrafana-loki-getting-started)
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fpolar3130%2Fgrafana-loki-getting-started&cloudshell_tutorial=tutorial.md)
 
 マニュアルでリポジトリをcloneした場合や、途中から再開する場合は、次のコマンドでチュートリアルを起動してください
 
