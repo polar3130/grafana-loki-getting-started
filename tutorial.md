@@ -86,7 +86,7 @@ GKE クラスタの作成をリクエストします
 gcloud container clusters create loki-handson-cluster --enable-ip-alias --num-nodes 3 --zone $COMPUTE_ZONE --async
 ```
 
-<br />  
+.
 
 GKE クラスタのステータスが **PROVISIONING** になっていることを確認します
 
@@ -120,12 +120,31 @@ Kubernetes のパッケージマネージャである Helm のバージョンを
 helm version
 ```
 
-  
-$ kubectl -n kube-system create serviceaccount tiller
-$ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
-$ helm init --service-account=tiller
+.
+
+Tiller のサービスアカウントを作成します
+
+```bash
+kubectl -n kube-system create serviceaccount tiller
+```
+
+.
 
 
+Tiller のサービスアカウントにクラスタロールをバインドします
+
+```bash
+kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+```
+
+.
+
+
+Tiller を GKE クラスタにインストールします
+
+```bash
+helm init --service-account=tiller
+```
 
 ## 0.9 namespace の作成
 
@@ -143,7 +162,8 @@ Helm に Grafana Loki のリポジトリを登録します
 helm repo add loki https://grafana.github.io/loki/charts
 ```
 
-  
+.
+
 リポジトリをアップデートします
 
 ```bash
