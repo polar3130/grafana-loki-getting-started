@@ -12,11 +12,9 @@
 
 ## 0. 環境準備
 
-この章では、GKE クラスタを作成し、Grafana Loki※ をベースとしたロギングスタックとサンプルアプリケーションをデプロイします
+この章では、GKE クラスタを作成し、Grafana Loki をベースとしたロギングスタックとサンプルアプリケーションをデプロイします
 
 チュートリアルを開始する前にGCPのプロジェクトを新規に作成してください
-
-※ 以後、Loki と略記する場合があります
 
 ## 0.1 プロジェクトの作成/確認
 
@@ -70,7 +68,8 @@ export COMPUTE_ZONE=$(gcloud config get-value compute/zone); echo $COMPUTE_ZONE
 
 ## 0.4 APIの有効化
 
-GKE クラスタの作成に必要となる API を有効化します  
+GKE クラスタの作成に必要となる API を有効化します
+
 （有効化には数分を要する場合があります）
 
 ```bash
@@ -81,7 +80,8 @@ gcloud services enable \
 
 ## 0.5 GKE クラスタの作成
 
-GKE クラスタの作成をリクエストします  
+GKE クラスタの作成をリクエストします
+
 （Cloud Shell のコントロールはクラスタの作成完了を待たずにユーザに戻ります）
 
 ```bash
@@ -116,13 +116,15 @@ gcloud container clusters get-credentials loki-handson-cluster --zone $COMPUTE_Z
 
 ## 0.8 Helm のインストール
 
-Kubernetes のパッケージマネージャである Helm のバージョンを確認します
+Kubernetes のパッケージマネージャである Helm v3 をインストールします
 
 ```bash
-helm version
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ```
 
 .
+
+**Helm のバージョンを変更したくない(Helm v2を利用したい)場合**
 
 Tiller のサービスアカウントを作成します
 
@@ -150,18 +152,34 @@ helm init --service-account=tiller
 
 ## 0.9 namespace の作成
 
-Loki などのロギングスタックをインストールする namespace を作成します
+Loki などのロギングスタックを展開するための namespace を作成します
 
 ```bash
 kubectl create ns loki
 ```
 
-## 0.10
+.
+
+サンプルアプリケーションを展開するための namespace を作成します
+
+```bash
+kubectl create ns app
+```
+
+## 0.10 リポジトリ設定の追加
+
+Helm に stable のリポジトリを登録します
+
+```bash
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/ 
+```
+
+.
 
 Helm に Grafana Loki のリポジトリを登録します
 
 ```bash
-helm repo add loki https://grafana.github.io/loki/charts
+helm repo add loki https://grafana.github.io/loki/charts/
 ```
 
 .
@@ -172,26 +190,35 @@ helm repo add loki https://grafana.github.io/loki/charts
 helm repo update
 ```
 
-## 0.11 Loki スタックのインストール
+## 0.11 サンプルアプリケーションのインストール
+
+サンプルアプリケーションの Wordpress を GKE クラスタにインストールします
+
+```bash
+helm install wordpress --namespace app stable/wordpress
+```
+
+## 0.12 環境の確認
+
+展開したサンプルアプリケーションの状態を確認します
+
+```bash
+kubectl get all --namespace app
+```
+
+## 0.13 Loki スタックのインストール
 
 Loki スタック※ を GKE クラスタにインストールします
+
 ※ Grafana, Grafana Loki, Promtail によるロギングスタック
 
 ```bash
-helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=true --set grafana.image.tag=master --set prometheus.enabled=true
+helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=true --set grafana.image.tag=6.6.0-beta1
 ```
 
+.
 
-## 0.x
-
-cd
-
-git clone https://github.com/GoogleCloudPlatform/microservices-demo.git
-
-cd microservices-demo
-
-skaffold run --default-repo=gcr.io/$PROJECT_ID
-
+イントール結果の確認は次章で行います
 
 ## 1.0 Loki スタックの概要
 
@@ -199,6 +226,8 @@ skaffold run --default-repo=gcr.io/$PROJECT_ID
 kubectl get all -n loki
 ```
 
+
+## 2.0
 
 ```bash
 kubectl get secret loki-stack-grafana -n loki -o jsonpath="{.data.admin-password}" | base64 -d
