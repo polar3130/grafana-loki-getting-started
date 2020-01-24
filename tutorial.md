@@ -192,6 +192,7 @@ cd microservices-demo
 
 skaffold run --default-repo=gcr.io/$PROJECT_ID
 
+
 ## 1.0 Loki スタックの概要
 
 ```bash
