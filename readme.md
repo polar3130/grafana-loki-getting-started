@@ -14,12 +14,14 @@ cloudshell launch-tutorial -d tutorial.md
 
 ## チュートリアル目次
 
-1. 環境準備
-2. LogQL 入門
+0. 環境準備
+1. Loki スタックの概要
+2. Explore / LogQL 入門
 3. Aggregatable Events の可視化
 4. 片付け 
 
 ## Author
 
-Masahiko Utsunomiya  
+Masahiko Utsunomiya
+
 @polar3130
