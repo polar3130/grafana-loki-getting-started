@@ -8,7 +8,7 @@
 
 マニュアルでリポジトリをcloneした場合や、途中から再開する場合は、次のコマンドでチュートリアルを起動してください
 
-```bash
+```
 cloudshell launch-tutorial -d tutorial.md
 ```
 
