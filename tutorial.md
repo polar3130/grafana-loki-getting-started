@@ -70,7 +70,7 @@ export COMPUTE_ZONE=$(gcloud config get-value compute/zone); echo $COMPUTE_ZONE
 
 GKE クラスタの作成に必要となる API を有効化します
 
-（有効化には数分を要する場合があります）
+（有効化には数分かかる場合があります）
 
 ```bash
 gcloud services enable \
@@ -85,7 +85,7 @@ GKE クラスタの作成をリクエストします
 （Cloud Shell のコントロールはクラスタの作成完了を待たずにユーザに戻ります）
 
 ```bash
-gcloud container clusters create loki-handson-cluster --enable-ip-alias --num-nodes 3 --zone $COMPUTE_ZONE --async
+gcloud container clusters create loki-handson-cluster --enable-ip-alias --num-nodes 2 --zone $COMPUTE_ZONE --async
 ```
 
 .
@@ -124,7 +124,7 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bas
 
 .
 
-**Helm のバージョンを変更したくない(Helm v2を利用したい)場合**
+**Helm のバージョンを変更したくない(Helm v2 を利用したい)場合は、上記に代わり以下の手順を実行してください**
 
 Tiller のサービスアカウントを作成します
 
@@ -208,12 +208,10 @@ kubectl get all --namespace app
 
 ## 0.13 Loki スタックのインストール
 
-Loki スタック※ を GKE クラスタにインストールします
-
-※ Grafana, Grafana Loki, Promtail によるロギングスタック
+Grafana Loki をベースとしたロギングスタック を GKE クラスタにインストールします
 
 ```bash
-helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=true --set grafana.image.tag=6.6.0-beta1
+helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=true,grafana.image.tag=6.6.0-beta1
 ```
 
 .
@@ -222,19 +220,42 @@ helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=t
 
 ## 1.0 Loki スタックの概要
 
+この章では Grafana Loki をベースとした
+Loki スタックの構成
+
+## 1.1 Loki スタックの状態確認
+
+展開したロギングスタックの状態を確認します
+
 ```bash
 kubectl get all -n loki
 ```
 
+## 1.2
 
-## 2.0
+Grafana にログインするためのパスワードを確認します
 
 ```bash
 kubectl get secret loki-stack-grafana -n loki -o jsonpath="{.data.admin-password}" | base64 -d
 ```
 
+.
+
+Grafana の Web コンソールにアクセスするためのポートフォワードを行います
 
 ```bash
-gcloud container clusters get-credentials loki-handson-cluster --zone $COMPUTE_ZONE --project $PROJECT_ID \
- && kubectl port-forward --namespace loki $(kubectl get pod --namespace loki --selector="app=grafana,release=loki-stack" --output jsonpath='{.items[0].metadata.name}') 8080:3000
+kubectl port-forward -n loki $(kubectl get pod -n loki --selector="app=grafana,release=loki-stack" --output jsonpath='{.items[0].metadata.name}') 8080:3000
 ```
+
+## 1.x
+
+ここからは Grafana の Web コンソールを利用します
+
+Cloud Shell の画面右上にある **\[ウェブでプレビュー\]** のアイコンをクリックし、サブメニューの **\[ポート 8080 でプレビュー\]** をクリックします
+
+.
+
+ログイン画面が表示されたら、
+以下の
+- username:
+- 
