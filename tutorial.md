@@ -10,7 +10,7 @@
 3. Aggregatable Events の可視化
 4. 片付け 
 
-## 0. 環境準備
+## 0 環境準備
 
 この章では、GKE クラスタを作成し、Grafana Loki をベースとしたロギングスタックとサンプルアプリケーションをデプロイします
 
@@ -218,7 +218,7 @@ helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=t
 
 イントール結果の確認は次章で行います
 
-## 1.0 Loki スタックの概要
+## 1 Loki スタックの概要
 
 この章では、Grafana Loki をベースとしたロギングスタックの構成と、各コンポーネントの関係性を確認します
 
@@ -265,7 +265,7 @@ Grafana のコンソール左端のメニューから **Configuration(歯車の�
 
 Data Souces に Loki が追加されていることを確認します
 
-## 2.0 Explore / LogQL 入門
+## 2 Explore / LogQL 入門
 
 この章では、Grafana の Explore を利用したアドホックなログ検索を行います
 
@@ -278,23 +278,64 @@ Grafana のコンソール左端のメニューから **Explore(方位磁針の�
 Explore の画面が表示されたら、画面上部のテキストボックス（**Log Labels ▼** の右側）に次のクエリを入力し、画面右上の **Run Query** ボタンをクリックします
 
 ```
-{namespace="loki"}
+{namespace="app"}
 ```
 
 ## 2.2 Explore におけるログ検索
 
-手順2.1 のログ検索結果をもとに、Explore の機能や表示されている情報について説明します
+手順 2.1 のログ検索結果をもとに、Explore の機能や表示について説明します
 
 - 定期的なリロード と Live tail
 - Severity フィルタ
 - 各スイッチの説明
-- ログの抽出上限
-- Detail パネル
 
 ## 2.3 ストリームセレクタとフィルタ式
 
+Grafana の Explore に次のクエリを入力し、**Run Query** ボタンをクリックします
 
 ```
-{namespace="loki"}
+{namespace="loki",app="promtail"} |= "wordpress"
 ```
 
+## 2.4 ラベルベースのインデックス管理
+
+手順 2.3 のログ検索結果をもとに、LogQL の基礎について説明します
+
+- 非構造化データの取り扱い
+- 単行ログと複数行ログ
+- ログの抽出上限
+- Explore の Detail パネル
+
+## 3 Aggregatable Events の可視化
+
+この章では、ログに基づくメトリクス(Aggregatable Events)を可視化します
+
+
+
+## 4 片付け
+
+課金対象のリソースを削除します
+
+.
+
+プロジェクトごと削除する場合はこちら
+
+[\[リソースの管理\]ページに移動](https://console.cloud.google.com/cloud-resource-manager?hl=ja)  
+
+## 4.1 GKE クラスタの削除
+
+GKE クラスタを削除します
+
+```bash
+gcloud container clusters delete loki-handson-cluster --zone $COMPUTE_ZONE --async
+```
+
+## 終了
+
+このチュートリアルでは以下を行いました：
+
+- GKE クラスタ に Grafana Loki を中心としたロギングスタックを構成する
+- Grafana Loki により Kubernetes ワークロードをクラスタレベルでロギングする
+- ログに基づくメトリクス(Aggregatable Events)を可視化する
+
+おつかれさまでした！
