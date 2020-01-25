@@ -20,6 +20,10 @@ cloudshell launch-tutorial -d tutorial.md
 3. Aggregatable Events の可視化
 4. 片付け 
 
+## 投影資料
+
+https://speakerdeck.com/polar3130
+
 ## Author
 
 Masahiko Utsunomiya
