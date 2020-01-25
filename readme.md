@@ -1,4 +1,4 @@
-# Grafana Loki で学ぶ Kubernetes ロギング ハンズオン
+# Grafana Loki ではじめる Kubernetes ロギングハンズオン
 
 ## Open this repo in Google Cloud Shell
 
