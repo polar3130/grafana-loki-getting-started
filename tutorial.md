@@ -371,6 +371,20 @@ GKE クラスタを削除します
 gcloud container clusters delete loki-handson-cluster --zone $COMPUTE_ZONE --async
 ```
 
+## 4.2 クラスタの停止確認
+
+GKE クラスタがリストから削除されたことを確認します
+
+```bash
+gcloud container clusters list
+```
+
+.
+  
+コンソールで確認する場合は以下をクリック
+
+[Display on the Console](https://console.cloud.google.com/kubernetes/list)
+
 ## 終了
 
 このチュートリアルでは以下を行いました：
