@@ -310,7 +310,36 @@ Grafana の Explore に次のクエリを入力し、**Run Query** ボタンを�
 
 この章では、ログに基づくメトリクス(Aggregatable Events)を可視化します
 
+## 3.1 可視化するログストリームの確認
 
+Grafana の Explore に次のクエリを入力し、**Run Query** ボタンをクリックします
+
+手順 2.3 と同じストリームセレクタで、フィルタ式を除いたクエリとなっています
+
+```
+{namespace="loki",app="promtail"}
+```
+
+## 3.2 検索モードの切り替え
+
+Explore の画面上部、Data Source に **Loki** と表示されているプルダウンメニューの右にある **Metrics | Logs** のスイッチの **Metrics""をクリックします
+
+Loki の検索モードがメトリクスに切り替わります
+
+.
+
+クエリのテキストボックスに選択したラベルセットが残っていることを確認し、クエリを以下のように修正します
+
+```
+sum(count_over_time({namespace="loki",app="promtail"}[10s])) by (instance)
+```
+
+## 3.3 Range Vector セレクタとアグリゲーション
+
+手順 3.2 のメトリクス検索結果をもとに、ログの集約について説明します
+
+- Range Vector セレクタ
+- アグリゲーション
 
 ## 4 片付け
 
@@ -335,7 +364,7 @@ gcloud container clusters delete loki-handson-cluster --zone $COMPUTE_ZONE --asy
 このチュートリアルでは以下を行いました：
 
 - GKE クラスタ に Grafana Loki を中心としたロギングスタックを構成する
-- Grafana Loki により Kubernetes ワークロードをクラスタレベルでロギングする
+- Grafana Loki を使って Kubernetes ワークロードをクラスタレベルでロギングする
 - ログに基づくメトリクス(Aggregatable Events)を可視化する
 
 おつかれさまでした！
