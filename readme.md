@@ -1,6 +1,4 @@
 # Grafana Loki で学ぶ Kubernetes ロギング ハンズオン
-「Grafana Loki を使って Kubernetes のクラスタレベルロギングを学ぶハンズオンワークショップ」のリポジトリ
-
 
 ## Open this repo in Google Cloud Shell
 

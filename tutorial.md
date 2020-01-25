@@ -1,6 +1,6 @@
 # Tutorial
 
-「Grafana Loki を使って Kubernetes のクラスタレベルロギングを学ぶハンズオンワークショップ」のチュートリアル
+Grafana Loki を使って Kubernetes のクラスタレベルロギングを学ぶ、ハンズオンワークショップのチュートリアルです
 
 ## Agenda
 
