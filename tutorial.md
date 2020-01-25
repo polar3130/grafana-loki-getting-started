@@ -73,9 +73,7 @@ GKE クラスタの作成に必要となる API を有効化します
 （有効化には数分かかる場合があります）
 
 ```bash
-gcloud services enable \
-  cloudapis.googleapis.com \
-  container.googleapis.com
+gcloud services enable cloudapis.googleapis.com container.googleapis.com
 ```
 
 ## 0.5 GKE クラスタの作成
