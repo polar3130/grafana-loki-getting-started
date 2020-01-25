@@ -341,6 +341,18 @@ sum(count_over_time({namespace="loki",app="promtail"}[10s])) by (instance)
 - Range Vector セレクタ
 - アグリゲーション
 
+## Appendix
+
+時間に余裕のある方むけに、追加のハンズオンをご用意しています
+
+以下のコマンドでチュートリアルを起動してください
+
+```
+cloudshell launch-tutorial -d tutorial-appendix.md
+```
+
+チュートリアルを終了する場合はこのセクションをスキップしてください
+
 ## 4 片付け
 
 課金対象のリソースを削除します
