@@ -24,7 +24,7 @@ GCP プロジェクトを新規作成します
 
 [\[リソースの管理\]ページに移動](https://console.cloud.google.com/cloud-resource-manager?hl=ja)  
 
-.
+---
 
 **ハンズオンに使用するプロジェクトを作成済みの場合**
 
@@ -122,9 +122,9 @@ Kubernetes のパッケージマネージャである Helm v3 をインストー
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ```
 
-.
+---
 
-**Helm のバージョンを変更したくない(Helm v2 を利用したい)場合は、上記に代わり以下の手順を実行してください**
+**Helm のバージョンを変更したくない(Helm v2 を利用したい)場合は、上記に代わり、以下の手順を実行してください**
 
 Tiller のサービスアカウントを作成します
 
@@ -263,6 +263,8 @@ Cloud Shell の画面右上にある **\[ウェブでプレビュー\]** のア�
 
 Grafana のコンソール左端のメニューから **Configuration(歯車のマーク)** をクリックし、サブメニューの **Data Sources** をクリックします
 
+https://cloud.google.com/shell/docs/images/web_preview.svg
+
 Data Souces に Loki が追加されていることを確認します
 
 ## 2 Explore / LogQL 入門
@@ -271,11 +273,11 @@ Data Souces に Loki が追加されていることを確認します
 
 ## 2.1 はじめての LogQL
 
-Grafana のコンソール左端のメニューから **Explore(方位磁針のマーク)** をクリックします
+Grafana のコンソール左端のメニューから **Explore(コンパスのマーク)** をクリックします
 
 .
 
-Explore の画面が表示されたら、画面上部のテキストボックス（**Log Labels ▼** の右側）に次のクエリを入力し、画面右上の **Run Query** ボタンをクリックします
+Explore の画面が表示されたら、画面上部のテキストボックス（**Log labels ▼** の右側）に次のクエリを入力し、画面右上の **Run Query** ボタンをクリックします
 
 ```
 {namespace="app"}
@@ -322,7 +324,7 @@ Grafana の Explore に次のクエリを入力し、**Run Query** ボタンを�
 
 ## 3.2 検索モードの切り替え
 
-Explore の画面上部、Data Source に **Loki** と表示されているプルダウンメニューの右にある **Metrics | Logs** のスイッチの **Metrics""をクリックします
+Explore の画面上部、Data Source に **Loki** と表示されているプルダウンメニューの右にある **Metrics** のボタンをクリックします
 
 Loki の検索モードがメトリクスに切り替わります
 
@@ -387,10 +389,10 @@ gcloud container clusters list
 
 ## 終了
 
+おつかれさまでした！
+
 このチュートリアルでは以下を行いました：
 
-- GKE クラスタ に Grafana Loki を中心としたロギングスタックを構成する
-- Grafana Loki を使って Kubernetes ワークロードをクラスタレベルでロギングする
-- ログに基づくメトリクス(Aggregatable Events)を可視化する
-
-おつかれさまでした！
+- GKE で Grafana Loki のロギングスタックを構成する
+- Loki を使った Kubernetes のクラスタレベルロギング
+- ログに基づくメトリクス(Aggregatable Events)の可視化
