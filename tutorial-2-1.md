@@ -204,6 +204,12 @@ kubectl label namespace app istio-injection=enabled
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.4/samples/bookinfo/platform/kube/bookinfo.yaml -n app
 ```
 
+.
+
+サンプルアプリケーションのアーキテクチャは次のリンク先で確認することができます
+
+[Bookinfo](https://istio.io/docs/examples/bookinfo/)
+
 ## 0.12 環境の確認
 
 展開したサンプルアプリケーションの状態を確認します
