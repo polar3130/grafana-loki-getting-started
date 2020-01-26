@@ -212,7 +212,31 @@ kubectl apply -f https://github.com/istio/istio/blob/master/samples/bookinfo/pla
 kubectl get all --namespace app
 ```
 
-## 0.13 Loki スタックのインストール
+## 0.13 kubectl logs によるログの参照
+
+サンプルアプリケーションの Pod の情報を取得します
+
+```bash
+kubectl get pods -n app
+```
+
+.
+
+サンプルアプリケーションの Pod からひとつを選択し、次のコマンドを実行してログを参照します 
+
+```bash
+kubectl logs -n app <YOUR-POD-NAME>
+```
+
+.
+
+Pod 内に複数のコンテナを含む場合は、ログを参照する対象のコンテナを指定する必要があります
+
+```bash
+kubectl logs -n app <YOUR-POD-NAME> -c <YOUR-CONTAINER-NAME>
+```
+
+## 0.14 Loki スタックのインストール
 
 Grafana Loki をベースとしたロギングスタック を GKE クラスタにインストールします
 
@@ -260,7 +284,7 @@ Cloud Shell の画面右上にある **\[ウェブでプレビュー\]** のア�
 
 .
 
-ログイン画面で以下のとおりに入力してログインします
+ログイン画面で次のとおりに入力してログインします
 
 - username: **admin**
 - password: **\<手順 1.2 で確認したパスワード\>**
@@ -357,7 +381,7 @@ sum(count_over_time({namespace="app"}[10s])) by (app,version)
 
 時間に余裕のある方むけに、追加のハンズオンをご用意しています
 
-以下のコマンドでチュートリアルを起動してください
+次のコマンドでチュートリアルを起動してください
 
 ```bash
 cloudshell launch-tutorial -d tutorial-1-2.md
