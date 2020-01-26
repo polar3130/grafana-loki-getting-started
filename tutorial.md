@@ -261,8 +261,6 @@ Cloud Shell の画面右上にある **\[ウェブでプレビュー\]** のア�
 
 Grafana のコンソール左端のメニューから **Configuration(歯車のマーク)** をクリックし、サブメニューの **Data Sources** をクリックします
 
-https://cloud.google.com/shell/docs/images/web_preview.svg
-
 Data Souces に Loki が追加されていることを確認します
 
 ## 2 Explore / LogQL 入門
@@ -299,7 +297,7 @@ Grafana の Explore に次のクエリを入力し、**Run Query** ボタンを�
 
 ## 2.4 ラベルベースのインデックス管理
 
-手順 2.3 のログ検索結果をもとに、LogQL の基礎について説明します
+手順 2.3 のログ検索結果をもとに、Loki のデータモデルと LogQL の基礎について説明します
 
 - 非構造化データの取り扱い
 - 単行ログと複数行ログ
@@ -339,7 +337,7 @@ sum(count_over_time({namespace="loki",app="promtail"}[10s])) by (instance)
 手順 3.2 のメトリクス検索結果をもとに、ログの集約について説明します
 
 - Range Vector セレクタ
-- アグリゲーション
+- ログアグリゲーション
 
 ## Appendix
 
@@ -347,7 +345,7 @@ sum(count_over_time({namespace="loki",app="promtail"}[10s])) by (instance)
 
 以下のコマンドでチュートリアルを起動してください
 
-```
+```bash
 cloudshell launch-tutorial -d tutorial-appendix.md
 ```
 

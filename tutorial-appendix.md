@@ -1,6 +1,8 @@
 ## Appendix
 
-この追加のチュートリアルでは、LogCLI という Grafana Loki のクライアントツールを用いて、CLI ベースでの Kubernetes クラスタレベルロギングを行います
+この追加のチュートリアルでは、CLI ベースでの Kubernetes クラスタレベルロギングを行います
+
+Grafana Loki の公式リポジトリで提供されている LogCLI というクライアントツールを利用します
 
 ## a.1 テンポラリコンテナの作成
 
