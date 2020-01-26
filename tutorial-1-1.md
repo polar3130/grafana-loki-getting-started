@@ -363,6 +363,10 @@ sum(count_over_time({namespace="loki",app="promtail"}[10s])) by (instance)
 - Range Vector セレクタ
 - ログアグリゲーション
 
+## 3.4 ポートフォワーディングの終了
+
+Grafana にアクセスするためのポートフォワーディングを終了するには、Cloud Shell のターミナル上で **Ctrl + C** を入力します
+
 ## Appendix
 
 時間に余裕のある方むけに、追加のハンズオンをご用意しています

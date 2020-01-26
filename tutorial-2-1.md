@@ -324,7 +324,7 @@ Explore の画面が表示されたら、画面上部のテキストボックス
 Grafana の Explore に次のクエリを入力し、**Run Query** ボタンをクリックします
 
 ```
-{namespace="default",app="reviews"} |= "warning"
+{namespace="app",app="reviews"} |= "warning"
 ```
 
 ## 2.4 ラベルベースのインデックス管理
@@ -376,6 +376,10 @@ sum(count_over_time({namespace="app"}[10s])) by (app,version)
 
 - Range Vector セレクタ
 - ログアグリゲーション
+
+## 3.4 ポートフォワーディングの終了
+
+Grafana にアクセスするためのポートフォワーディングを終了するには、Cloud Shell のターミナル上で **Ctrl + C** を入力します
 
 ## Appendix
 
