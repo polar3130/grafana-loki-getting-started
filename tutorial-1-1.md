@@ -346,7 +346,7 @@ sum(count_over_time({namespace="loki",app="promtail"}[10s])) by (instance)
 以下のコマンドでチュートリアルを起動してください
 
 ```bash
-cloudshell launch-tutorial -d tutorial-appendix.md
+cloudshell launch-tutorial -d tutorial-1-2.md
 ```
 
 チュートリアルを終了する場合はこのセクションをスキップしてください
