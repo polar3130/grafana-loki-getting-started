@@ -201,7 +201,7 @@ kubectl label namespace app istio-injection=enabled
 サンプルアプリケーションの Istio/Bookinfo を GKE クラスタにインストールします
 
 ```bash
-kubectl apply -f https://github.com/istio/istio/blob/master/samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.4/samples/bookinfo/platform/kube/bookinfo.yaml -n app
 ```
 
 ## 0.12 環境の確認
@@ -209,7 +209,7 @@ kubectl apply -f https://github.com/istio/istio/blob/master/samples/bookinfo/pla
 展開したサンプルアプリケーションの状態を確認します
 
 ```bash
-kubectl get all --namespace app
+kubectl get all -n app
 ```
 
 ## 0.13 kubectl logs によるログの参照
