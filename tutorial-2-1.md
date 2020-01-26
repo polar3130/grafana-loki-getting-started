@@ -12,7 +12,7 @@ Grafana Loki を使って Kubernetes のクラスタレベルロギングを学�
 
 ## 0 環境準備
 
-この章では、GKE クラスタを作成し、Grafana Loki をベースとしたロギングスタックとサンプルアプリケーションをデプロイします
+この章では、GKE クラスタを作成し、Grafana Loki をベースとしたロギングスタックと、マイクロサービスのサンプルアプリケーションをデプロイします
 
 チュートリアルを開始する前にGCPのプロジェクトを新規に作成してください
 
@@ -83,7 +83,7 @@ GKE クラスタの作成をリクエストします
 （Cloud Shell のコントロールはクラスタの作成完了を待たずにユーザに戻ります）
 
 ```bash
-gcloud container clusters create loki-handson-cluster --num-nodes 2 --zone $COMPUTE_ZONE --async
+gcloud beta container clusters create loki-handson-cluster --addons Istio --zone $COMPUTE_ZONE --async
 ```
 
 .
@@ -190,10 +190,18 @@ helm repo update
 
 ## 0.11 サンプルアプリケーションのインストール
 
-サンプルアプリケーションの Wordpress を GKE クラスタにインストールします
+サンプルアプリケーションを展開するためのラベルを "app" namespace に付与します
 
 ```bash
-helm install wordpress --namespace app stable/wordpress --set service.type=ClusterIP
+kubectl label namespace app istio-injection=enabled
+```
+
+.
+
+サンプルアプリケーションの Istio/Bookinfo を GKE クラスタにインストールします
+
+```bash
+kubectl apply -f https://github.com/istio/istio/blob/master/samples/bookinfo/platform/kube/bookinfo.yaml
 ```
 
 ## 0.12 環境の確認
@@ -292,7 +300,7 @@ Explore の画面が表示されたら、画面上部のテキストボックス
 Grafana の Explore に次のクエリを入力し、**Run Query** ボタンをクリックします
 
 ```
-{namespace="loki",app="promtail"} |= "wordpress"
+{namespace="default",app="reviews"} |= "warning"
 ```
 
 ## 2.4 ラベルベースのインデックス管理
@@ -312,10 +320,8 @@ Grafana の Explore に次のクエリを入力し、**Run Query** ボタンを�
 
 Grafana の Explore に次のクエリを入力し、**Run Query** ボタンをクリックします
 
-手順 2.3 と同じストリームセレクタで、フィルタ式を除いたクエリとなっています
-
 ```
-{namespace="loki",app="promtail"}
+{namespace="app"}
 ```
 
 ## 3.2 検索モードの切り替え
@@ -326,10 +332,18 @@ Loki の検索モードがメトリクスに切り替わります
 
 .
 
-クエリのテキストボックスに選択したラベルセットが残っていることを確認し、クエリを以下のように修正します
+クエリのテキストボックスに選択したラベルセットが残っていることを確認し、クエリを次のように修正します
 
 ```
-sum(count_over_time({namespace="loki",app="promtail"}[10s])) by (instance)
+sum(count_over_time({namespace="app"}[10s])) by (app)
+```
+
+.
+
+アプリケーション別のログが可視化されたことを確認し、クエリを次のように修正します
+
+```
+sum(count_over_time({namespace="app"}[10s])) by (app,version)
 ```
 
 ## 3.3 Range Vector セレクタとアグリゲーション

@@ -78,7 +78,7 @@ logcli labels job
 
 .
 
-サンプルアプリケーションを実行している名前空間のログを取得します
+サンプルアプリケーションを実行している "app" namespace のログを取得します
 
 ```bash
 logcli query '{namespace="app"}'
