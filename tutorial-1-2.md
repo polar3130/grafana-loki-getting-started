@@ -70,7 +70,7 @@ logcli labels
 
 ## a.5 Loki サーバへのクエリ
 
-Loki サーバが収集したログに付与されている "job" ラベルの値セットを取得します
+Loki サーバに蓄積されているログの "job" ラベルの値セットを取得します
 
 ```bash
 logcli labels job
