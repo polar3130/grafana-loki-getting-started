@@ -247,7 +247,7 @@ kubectl logs -n app <YOUR-POD-NAME> -c <YOUR-CONTAINER-NAME>
 Grafana Loki をベースとしたロギングスタック を GKE クラスタにインストールします
 
 ```bash
-helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=true,grafana.image.tag=6.6.0
+helm install loki-stack --namespace loki loki/loki-stack --set grafana.enabled=true
 ```
 
 .
