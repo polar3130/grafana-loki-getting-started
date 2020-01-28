@@ -20,7 +20,7 @@ cloudshell launch-tutorial -d tutorial-2-1.md
 
 ## 投影資料
 
-https://speakerdeck.com/polar3130
+https://speakerdeck.com/polar3130/grafana-loki-getting-started
 
 ## Author
 
