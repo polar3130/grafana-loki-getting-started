@@ -4,6 +4,10 @@
 
 Grafana Loki の公式リポジトリで提供されている LogCLI というクライアントツールを利用します
 
+ドキュメントはこちら
+
+[LogCLI](https://github.com/grafana/loki/blob/master/docs/getting-started/logcli.md)
+
 ## a.1 テンポラリコンテナの作成
 
 LogCLI を使うためのコンテナを作成し、ログインします
