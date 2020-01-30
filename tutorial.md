@@ -328,6 +328,7 @@ Explore の画面が表示されたら、画面上部の Data Source のプル�
 - 定期的なリロード と Live tail
 - Severity フィルタ
 - 各スイッチの説明
+- Explore の Detail パネル
 
 ## 2.3 ストリームセレクタとフィルタ式
 
@@ -337,14 +338,14 @@ Grafana の Explore に次のクエリを入力し、**Run Query** ボタンを�
 {namespace="app",app="reviews"} |= "warning"
 ```
 
-## 2.4 ラベルベースのインデックス管理
+## 2.4 ラベルベースのログ検索
 
 手順 2.3 のログ検索結果をもとに、Loki のデータモデルと LogQL の基礎について説明します
 
 - 非構造化データの取り扱い
-- 単行ログと複数行ログ
 - ログの抽出上限
-- Explore の Detail パネル
+- ログのコンテキスト
+- 単行ログと複数行ログ
 
 ## 3 Aggregatable Events の可視化
 
@@ -386,6 +387,7 @@ sum(count_over_time({namespace="app"}[10s])) by (app,version)
 
 - Range Vector セレクタ
 - ログアグリゲーション
+- Prometheus との親和性
 
 ## 3.4 ポートフォワーディングの終了
 
