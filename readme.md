@@ -2,12 +2,12 @@
 
 ## Open this repo in Google Cloud Shell
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/open?git_repo=https://github.com/polar3130/grafana-loki-getting-started.git&page=editor&tutorial=tutorial-2-1.md)
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/open?git_repo=https://github.com/polar3130/grafana-loki-getting-started.git&page=editor&tutorial=tutorial.md)
 
 マニュアルでリポジトリを clone した場合や、途中から再開する場合は、次のコマンドでチュートリアルを起動してください
 
 ```
-cloudshell launch-tutorial -d tutorial-2-1.md
+cloudshell launch-tutorial -d tutorial.md
 ```
 
 ## チュートリアル目次
