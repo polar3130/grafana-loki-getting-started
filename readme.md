@@ -22,6 +22,11 @@ cloudshell launch-tutorial -d tutorial.md
 
 https://speakerdeck.com/polar3130/grafana-loki-getting-started
 
+## notes
+
+- 各自個別のプロジェクトをご用意ください（複数人でひとつのプロジェクトを共用すると、手順内でリソースを作成する際に名前が重複してしまうため）
+- 同一端末で複数の Google アカウントを利用している場合は、ブラウザのシークレットウィンドウやゲストモードを使って Cloud Shell を起動してください
+
 ## Author
 
 Masahiko Utsunomiya
