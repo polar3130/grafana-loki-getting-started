@@ -238,6 +238,10 @@ kubectl logs -n app <YOUR-POD-NAME>
 
 Pod 内に複数のコンテナを含む場合は、ログを参照する対象のコンテナを指定する必要があります
 
+上記のコマンドを実行して出力されたエラーメッセージ内の "choose one of: ..." の部分に、この Pod に含まれているコンテナがリストされていますので、そのいずれかを下記の <YOUR-CONTAINER-NAME> の部分に入力してください
+
+コンテナの選択方法がわからない場合は、<YOUR-CONTAINER-NAME> を istio-proxy に置き換えて実行してください（ $ kubectl logs ... -c istio-proxy ）
+
 ```bash
 kubectl logs -n app <YOUR-POD-NAME> -c <YOUR-CONTAINER-NAME>
 ```
