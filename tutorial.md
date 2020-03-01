@@ -275,7 +275,7 @@ kubectl get all -n loki
 Grafana にログインするためのパスワードを確認します
 
 ```bash
-kubectl get secret loki-stack-grafana -n loki -o jsonpath="{.data.admin-password}" | base64 --decode
+kubectl get secret loki-stack-grafana -n loki -o jsonpath='{.data.admin-password}{"\n"}' | base64 --decode
 ```
 
 .
